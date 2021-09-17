@@ -24,6 +24,7 @@ import { merge } from 'lodash';
 import setupClient from './setup/setupClient';
 import setupColors from './setup/setupColors';
 import setupFormatters from './setup/setupFormatters';
+import aquagisTheme from './visualizations/aquagis/theme';
 
 if (process.env.WEBPACK_MODE === 'development') {
   setHotLoaderConfig({ logLevel: 'debug', trackTailUpdates: false });
@@ -62,4 +63,5 @@ setupFormatters();
 export const theme = merge(
   supersetTheme,
   bootstrapData?.common?.theme_overrides ?? {},
+  aquagisTheme
 );
