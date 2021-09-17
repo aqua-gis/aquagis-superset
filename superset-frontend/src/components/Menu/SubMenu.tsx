@@ -132,7 +132,7 @@ const SubMenu: React.FunctionComponent<SubMenuProps> = props => {
   }
   return (
     <StyledHeader>
-      <Navbar inverse fluid role="navigation">
+      <Navbar fluid role="navigation">
         <Navbar.Header>
           <Navbar.Brand>{props.name}</Navbar.Brand>
         </Navbar.Header>
