@@ -28,7 +28,7 @@ version: "3.7"
 services:
   superset-node:
     image: node:14
-    container_name: superset_node_npm
+    container_name: aq-superset_node_npm
     command: ["/app/docker/docker-frontend.sh"]
     env_file: docker/.env
     volumes: *superset-volumes
