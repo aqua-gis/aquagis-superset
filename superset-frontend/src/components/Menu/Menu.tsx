@@ -161,7 +161,7 @@ export function Menu({
 
   return (
     <StyledHeader className="top" id="main-menu">
-      <Navbar inverse fluid staticTop role="navigation">
+      <Navbar fluid staticTop role="navigation">
         <Navbar.Header>
           <Navbar.Brand>
             <a className="navbar-brand" href={brand.path}>

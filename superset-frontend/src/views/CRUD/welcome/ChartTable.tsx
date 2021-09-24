@@ -160,7 +160,7 @@ function ChartTable({
             },
           },
           {
-            name: 'View All »',
+            name: 'Всички »',
             buttonStyle: 'link',
             onClick: () => {
               const target =

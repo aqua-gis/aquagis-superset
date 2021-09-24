@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-x-superset-image: &superset-image apache/superset:latest-dev
+x-superset-image: &superset-image apache/superset:387d93302fa2f4f475cd572b62d0908615e67919
 x-superset-depends-on: &superset-depends-on
   - db
   - redis
