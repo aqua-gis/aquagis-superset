@@ -24,22 +24,22 @@ const mockedProps = {
   data: {
     menu: [
       {
-        name: 'Home',
+        name: 'Начало',
         icon: '',
-        label: 'Home',
+        label: 'Начало',
         url: '/superset/welcome',
         index: 1,
       },
       {
-        name: 'Sources',
+        name: 'Източници',
         icon: 'fa-table',
-        label: 'Sources',
+        label: 'Източници',
         index: 2,
         childs: [
           {
-            name: 'Datasets',
+            name: 'Набори от данни',
             icon: 'fa-table',
-            label: 'Datasets',
+            label: 'Набори от данни',
             url: '/tablemodelview/list/',
             index: 1,
           },
@@ -47,7 +47,7 @@ const mockedProps = {
           {
             name: 'Databases',
             icon: 'fa-database',
-            label: 'Databases',
+            label: 'Бази с данни',
             url: '/databaseview/list/',
             index: 2,
           },
@@ -56,14 +56,14 @@ const mockedProps = {
       {
         name: 'Charts',
         icon: 'fa-bar-chart',
-        label: 'Charts',
+        label: 'Графики',
         url: '/chart/list/',
         index: 3,
       },
       {
         name: 'Dashboards',
         icon: 'fa-dashboard',
-        label: 'Dashboards',
+        label: 'Табла',
         url: '/dashboard/list/',
         index: 4,
       },
@@ -103,13 +103,13 @@ const mockedProps = {
       {
         name: 'Security',
         icon: 'fa-cogs',
-        label: 'Security',
+        label: 'Сигурност',
         index: 1,
         childs: [
           {
             name: 'List Users',
             icon: 'fa-user',
-            label: 'List Users',
+            label: 'Списък с потребители',
             url: '/users/list/',
             index: 1,
           },
