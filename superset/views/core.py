@@ -814,7 +814,7 @@ class Superset(BaseSupersetView):  # pylint: disable=too-many-public-methods
                 if datasource_type == "table"
                 else datasource.datasource_name
             )
-            title = _("Explore - %(table)s", table=table_name)
+            title = _("Explore - %(table2)s", table2=table_name)
         else:
             title = _("Explore")
 
