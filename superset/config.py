@@ -249,12 +249,24 @@ DRUID_METADATA_LINKS_ENABLED = True
 # ----------------------------------------------------
 # AUTHENTICATION CONFIG
 # ----------------------------------------------------
+
+from superset.custom_sso import OIDCSecurityManager
+from flask_appbuilder.security.manager import AUTH_OID
+
+AUTH_TYPE = AUTH_OID
+OIDC_CLIENT_SECRETS = os.path.dirname(os.path.abspath(__file__)) + '/client_secrets.json'
+OIDC_ID_TOKEN_COOKIE_SECURE = False
+OIDC_REQUIRE_VERIFIED_EMAIL = False
+AUTH_USER_REGISTRATION = True
+AUTH_USER_REGISTRATION_ROLE = 'Gamma'
+CUSTOM_SECURITY_MANAGER = OIDCSecurityManager
+
 # The authentication type
 # AUTH_OID : Is for OpenID
 # AUTH_DB : Is for database (username/password)
 # AUTH_LDAP : Is for LDAP
 # AUTH_REMOTE_USER : Is for using REMOTE_USER from web server
-AUTH_TYPE = AUTH_DB
+#AUTH_TYPE = AUTH_DB
 
 # Uncomment to setup Full admin role name
 # AUTH_ROLE_ADMIN = 'Admin'
