@@ -28,6 +28,7 @@ import { MarkdownEditor } from 'src/components/AsyncAceEditor';
 import HoverMenu from 'src/dashboard/components/menu/HoverMenu';
 import DeleteComponentButton from 'src/dashboard/components/DeleteComponentButton';
 import DragDroppable from 'src/dashboard/components/dnd/DragDroppable';
+import HoverMenu from 'src/dashboard/components/menu/HoverMenu';
 import ResizableContainer from 'src/dashboard/components/resizable/ResizableContainer';
 import MarkdownModeDropdown from 'src/dashboard/components/menu/MarkdownModeDropdown';
 import WithPopoverMenu from 'src/dashboard/components/menu/WithPopoverMenu';
@@ -110,13 +111,8 @@ class Markdown extends React.PureComponent {
   }
 
   static getDerivedStateFromProps(nextProps, state) {
-    const {
-      hasError,
-      editorMode,
-      markdownSource,
-      undoLength,
-      redoLength,
-    } = state;
+    const { hasError, editorMode, markdownSource, undoLength, redoLength } =
+      state;
     const {
       component: nextComponent,
       undoLength: nextUndoLength,
@@ -318,7 +314,6 @@ class Markdown extends React.PureComponent {
                 value={this.state.editorMode}
                 onChange={this.handleChangeEditorMode}
               />,
-              <DeleteComponentButton onDelete={this.handleDeleteComponent} />,
             ]}
             editMode={editMode}
           >

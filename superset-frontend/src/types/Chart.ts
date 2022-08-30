@@ -40,6 +40,10 @@ export interface Chart {
   thumbnail_url?: string;
   owners?: Owner[];
   datasource_name_text?: string;
+  form_data: {
+    viz_type: string;
+  };
+  is_managed_externally: boolean;
 }
 
 export type Slice = {
@@ -52,6 +56,8 @@ export type Slice = {
   certification_details?: string;
   form_data?: QueryFormData;
   query_context?: object;
+  is_managed_externally: boolean;
+  owners?: number[];
 };
 
 export default Chart;
