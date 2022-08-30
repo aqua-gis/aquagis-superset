@@ -7,6 +7,7 @@
         "plural_forms": "nplurals=2; plural=(n != 1)",
         "lang": "bg"
       },
+
       "Home": ["У дома"], 
       "Annotation Layers": ["Слоеве с анотации"], 
       "Manage": ["Управление"], 
@@ -1641,7 +1642,6 @@
       "Check to include time origin dropdown": ["Поставете отметка, за да включите падащото меню за произход на времето"], 
       "Limit selector values": ["Ограничете стойностите на селектора"], 
       "These filters apply to the values available in the dropdowns": ["Тези филтри се отнасят за наличните стойности в падащите менюта"], 
-      "Time-series Table": ["Таблица с времеви редове"]
-    }
+      "Time-series Table": ["Таблица с времеви редове"]    }
   }
 }

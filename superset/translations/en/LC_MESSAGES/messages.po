@@ -7254,8 +7254,10 @@ msgstr ""
 "данни."
 
 #: superset-frontend/src/views/CRUD/data/database/DatabaseModal.tsx:608
+
 msgid "Impersonate Logged In User (Presto & Hive)"
 msgstr "Представете се влезли потребител (Presto &amp; Hive)"
+
 
 #: superset-frontend/src/views/CRUD/data/database/DatabaseModal.tsx:610
 msgid ""
