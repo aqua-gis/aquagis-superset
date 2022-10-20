@@ -27,6 +27,66 @@
 {% endmacro %}
 
 {% macro css_bundle(filename) %}
+	<!-- Aquagis css START -->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" />
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css" /> 
+<style>
+#main-menu, .ant-menu-horizontal {     background-color: black; color: #fff;}
+.ant-menu-horizontal>.ant-menu-item a, .css-d1dar4 { color: #fff !important;}
+.css-4zkusw .ant-menu-item a:hover, css-d1dar4:hover { background-color: #00abb5 !important; }
+.ant-btn:focus, .ant-btn:hover {
+    color: #1fbfc2;
+    background: #fff;
+    border-color: #1fbfc2;
+}
+.css-h6xiue-button {
+    display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    line-height: 1.5715;
+    font-size: 12px;
+    font-weight: 700;
+    height: 32px;
+    text-transform: uppercase;
+    padding: 0px 18px;
+    transition: all 0.3s ease 0s;
+    box-shadow: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(27, 170, 159);
+    border-radius: 4px;
+    color: rgb(27, 170, 159);
+    background-color: rgb(255, 255, 255);
+    margin-left: 0px;
+}
+
+.ant-btn {
+    line-height: 1.5715;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+    cursor: pointer;
+    transition: all .3s cubic-bezier(.645,.045,.355,1);
+    user-select: none;
+    touch-action: manipulation;
+    height: 32px;
+    padding: 4px 15px;
+    font-size: 14px;
+    border-radius: 2px;
+    color: rgba(0,0,0,.85);
+    background: #fff;
+    border: 1px solid #d9d9d9;
+}
+
+</style>
+	<!-- Aquagis css END -->
+
   <!-- Bundle css {{ filename }} START -->
   {% for entry in css_manifest(filename) %}
     <link rel="stylesheet" type="text/css" href="{{ entry }}" />
