@@ -228,7 +228,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             label=__("Annotation Layers"),
             icon="fa-comment",
             category="Manage",
-            category_label=__("Manage"),
+            category_label=__("Управление"),
             category_icon="",
         )
         appbuilder.add_view(
@@ -252,7 +252,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             "Plugins",
             label=__("Plugins"),
             category="Manage",
-            category_label=__("Manage"),
+            category_label=__("Управление"),
             icon="fa-puzzle-piece",
             menu_cond=lambda: feature_flag_manager.is_feature_enabled(
                 "DYNAMIC_PLUGINS"
@@ -264,15 +264,15 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             label=__("CSS Templates"),
             icon="fa-css3",
             category="Manage",
-            category_label=__("Manage"),
+            category_label=__("Управление"),
             category_icon="",
         )
         appbuilder.add_view(
             RowLevelSecurityFiltersModelView,
             "Row Level Security",
-            label=__("Row Level Security"),
+            label=__("Сигурност на ниво ред"),
             category="Security",
-            category_label=__("Security"),
+            category_label=__("Сигурност"),
             icon="fa-lock",
         )
 
@@ -313,7 +313,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             href="/superset/import_dashboards/",
             icon="fa-cloud-upload",
             category="Manage",
-            category_label=__("Manage"),
+            category_label=__("Управление"),
             category_icon="fa-wrench",
             cond=lambda: not feature_flag_manager.is_feature_enabled(
                 "VERSIONED_EXPORT"
@@ -369,7 +369,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             "Action Log",
             label=__("Action Log"),
             category="Security",
-            category_label=__("Security"),
+            category_label=__("Сигурност"),
             icon="fa-list-ol",
             menu_cond=lambda: (
                 self.config["FAB_ADD_SECURITY_VIEWS"]
@@ -386,7 +386,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             "Alerts & Report",
             label=__("Alerts & Reports"),
             category="Manage",
-            category_label=__("Manage"),
+            category_label=__("Управление"),
             icon="fa-exclamation-triangle",
             menu_cond=lambda: feature_flag_manager.is_feature_enabled("ALERT_REPORTS"),
         )
@@ -396,7 +396,7 @@ class SupersetAppInitializer:  # pylint: disable=too-many-public-methods
             "Access requests",
             label=__("Access requests"),
             category="Security",
-            category_label=__("Security"),
+            category_label=__("Сигурност"),
             icon="fa-table",
             menu_cond=lambda: bool(self.config["ENABLE_ACCESS_REQUEST"]),
         )
