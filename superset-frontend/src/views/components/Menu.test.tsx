@@ -16,42 +16,42 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-import React from 'react';
-import * as reactRedux from 'react-redux';
-import fetchMock from 'fetch-mock';
-import { render, screen } from 'spec/helpers/testing-library';
-import userEvent from '@testing-library/user-event';
-import { Menu } from './Menu';
-
-const dropdownItems = [
+ import React from 'react';
+ import * as reactRedux from 'react-redux';
+ import fetchMock from 'fetch-mock';
+ import { render, screen } from 'spec/helpers/testing-library';
+ import userEvent from '@testing-library/user-event';
+ import { Menu } from './Menu';
+ 
+ const dropdownItems = [
   {
-    label: 'Data',
+    label: 'Данни',
     icon: 'fa-database',
     childs: [
       {
-        label: 'Connect Database',
+        label: 'Свържете база данни',
         name: 'dbconnect',
         perm: true,
       },
       {
-        label: 'Connect Google Sheet',
+        label: 'Свържете Google Sheet',
         name: 'gsheets',
         perm: true,
       },
       {
-        label: 'Upload a CSV',
+        label: 'Качване на CSV',
         name: 'Upload a CSV',
         url: '/csvtodatabaseview/form',
         perm: true,
       },
       {
-        label: 'Upload a Columnar File',
+        label: 'Качване на  Columnar File',
         name: 'Upload a Columnar file',
         url: '/columnartodatabaseview/form',
         perm: true,
       },
       {
-        label: 'Upload Excel',
+        label: 'Качване Excel',
         name: 'Upload Excel',
         url: '/exceltodatabaseview/form',
         perm: true,
@@ -66,14 +66,14 @@ const dropdownItems = [
     view: 'Superset',
   },
   {
-    label: 'Chart',
+    label: 'Графики',
     url: '/chart/add',
     icon: 'fa-fw fa-bar-chart',
     perm: 'can_write',
     view: 'Chart',
   },
   {
-    label: 'Dashboard',
+    label: 'Табла',
     url: '/dashboard/new',
     icon: 'fa-fw fa-dashboard',
     perm: 'can_write',
@@ -104,64 +104,64 @@ const mockedProps = {
   data: {
     menu: [
       {
-        name: 'Home',
+        name: 'Начало',
         icon: '',
-        label: 'Home',
+        label: 'Начало',
         url: '/superset/welcome',
         index: 1,
       },
       {
-        name: 'Sources',
+        name: 'Източници',
         icon: 'fa-table',
-        label: 'Sources',
+        label: 'Източници',
         index: 2,
         childs: [
           {
-            name: 'Datasets',
+            name: 'Набор от данни',
             icon: 'fa-table',
-            label: 'Datasets',
+            label: 'Набор от данни',
             url: '/tablemodelview/list/',
             index: 1,
           },
           '-',
           {
-            name: 'Databases',
+            name: 'Бази от данни',
             icon: 'fa-database',
-            label: 'Databases',
+            label: 'Бази от данни',
             url: '/databaseview/list/',
             index: 2,
           },
         ],
       },
       {
-        name: 'Charts',
+        name: 'Графики',
         icon: 'fa-bar-chart',
-        label: 'Charts',
+        label: 'Графики',
         url: '/chart/list/',
         index: 3,
       },
       {
-        name: 'Dashboards',
+        name: 'Табла',
         icon: 'fa-dashboard',
-        label: 'Dashboards',
+        label: 'Табла',
         url: '/dashboard/list/',
         index: 4,
       },
       {
-        name: 'Data',
+        name: 'Данни',
         icon: 'fa-database',
-        label: 'Data',
+        label: 'Данни',
         childs: [
           {
-            name: 'Databases',
+            name: 'Бази от данни',
             icon: 'fa-database',
-            label: 'Databases',
+            label: 'Бази от данни',
             url: '/databaseview/list/',
           },
           {
-            name: 'Datasets',
+            name: 'Набор от данни',
             icon: 'fa-table',
-            label: 'Datasets',
+            label: 'Набор от данни',
             url: '/tablemodelview/list/',
           },
           '-',
@@ -205,15 +205,15 @@ const mockedProps = {
     },
     settings: [
       {
-        name: 'Security',
+        name: 'Сигурност',
         icon: 'fa-cogs',
-        label: 'Security',
+        label: 'Сигурност',
         index: 1,
         childs: [
           {
-            name: 'List Users',
+            name: 'Списък с потребители',
             icon: 'fa-user',
-            label: 'List Users',
+            label: 'Списък с потребители',
             url: '/users/list/',
             index: 1,
           },

@@ -7,7 +7,22 @@
         "plural_forms": "nplurals=2; plural=(n != 1)",
         "lang": "bg"
       },
-      "Home": ["У дома"], 
+      
+      "Permissions":["Разрешения"],
+      "Add Role":["Добавяне на роля"],
+      "List of Registration Requests":["Списък на заявките за регистрация"],
+      "Type a value": ["Въведете стойност"],
+      "Select or type a value": ["Изберете или въведете стойност"],
+      "List Users": ["Списък на потребителите"], 
+      "List Roles": ["Списък на ролите"], 
+      "Users Registrations": ["Регистрации на потребители"], 
+      "Upload Excel file to database":["Качване на файл на Excel в базата данни"],
+      "Upload columnar file to database":["Качване на колонен файл в базата данни"],
+      "Upload CSV to database":["Качване на CSV в базата данни"],
+      "Connect database":["Свързване на базата данни"],
+      
+      "Connect Google Sheet": ["Алабала google"],
+      "Home": ["Начало"], 
       "Annotation Layers": ["Слоеве с анотации"], 
       "Manage": ["Управление"], 
       "Databases": ["Бази данни"], 

@@ -217,7 +217,7 @@ function ChartTable({
             },
           },
           {
-            name: t('View All »'),
+            name: t('Всички »'),
             buttonStyle: 'link',
             onClick: () => {
               const target =
