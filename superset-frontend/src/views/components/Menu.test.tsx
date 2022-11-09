@@ -22,8 +22,8 @@ import fetchMock from 'fetch-mock';
 import { render, screen } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import { Menu } from './Menu';
- 
- const dropdownItems = [
+
+const dropdownItems = [
   {
     label: 'Данни',
     icon: 'fa-database',
