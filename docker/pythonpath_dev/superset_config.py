@@ -24,13 +24,30 @@ import logging
 import os
 from datetime import timedelta
 from typing import Optional
-
-
 from flask_babel import lazy_gettext as _
-
-
 from cachelib.file import FileSystemCache
 from celery.schedules import crontab
+from keycloack_securtiy_manager  import  OIDCSecurityManager
+from flask_appbuilder.security.manager import AUTH_OID, AUTH_REMOTE_USER, AUTH_DB, AUTH_LDAP, AUTH_OAUTH
+import os
+'''
+---------------------------KEYCLOACK ----------------------------
+'''
+curr  =  os.path.abspath(os.getcwd())
+AUTH_TYPE = AUTH_OID
+SECRET_KEY: 'SomethingNotEntirelySecret'
+OIDC_CLIENT_SECRETS =  curr + '/docker/pythonpath_dev/client_secret.json'
+OIDC_ID_TOKEN_COOKIE_SECURE = False
+OIDC_REQUIRE_VERIFIED_EMAIL = False
+OIDC_OPENID_REALM: 'realm1'
+OIDC_INTROSPECTION_AUTH_METHOD: 'client_secret_post'
+CUSTOM_SECURITY_MANAGER = OIDCSecurityManager
+AUTH_USER_REGISTRATION = True
+AUTH_USER_REGISTRATION_ROLE = 'Gamma'
+'''
+--------------------------------------------------------------
+'''
+
 
 logger = logging.getLogger()
 
