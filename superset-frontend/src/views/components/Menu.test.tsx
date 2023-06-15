@@ -170,7 +170,7 @@ const mockedProps = {
     ],
     brand: {
       path: '/superset/profile/admin/',
-      icon: '/static/assets/images/superset-logo-horiz.png',
+      icon: '',
       alt: 'Superset',
       width: '126',
       tooltip: '',
