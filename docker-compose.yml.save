@@ -14,10 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-x-superset-image: &superset-image apache/superset:2.0.0
+x-superset-image: &superset-image apache/superset:latest-dev
 x-superset-user: &superset-user root
 x-superset-depends-on: &superset-depends-on
-#  - db
+  - db
   - redis
 x-superset-volumes: &superset-volumes
   # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
@@ -38,15 +38,15 @@ services:
     volumes:
       - redis:/data
 
- # db:
+#  db:
  #   env_file: docker/.env
- #   image: postgres:14
- #   container_name: superset_db
- #   restart: unless-stopped
- #   ports:
- #     - "127.0.0.1:5432:5432"
- #   volumes:
- #     - db_home:/var/lib/postgresql/data
+  #  image: postgres:10
+   # container_name: superset_db
+    #restart: unless-stopped
+    p#orts:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - db_home:/var/lib/postgresql/data
 
   superset:
     env_file: docker/.env
@@ -55,7 +55,7 @@ services:
     command: ["/app/docker/docker-bootstrap.sh", "app"]
     restart: unless-stopped
     ports:
-      - 1564:1564
+      - 8088:8088
     user: *superset-user
     depends_on: *superset-depends-on
     volumes: *superset-volumes
@@ -102,7 +102,7 @@ services:
       CYPRESS_CONFIG: "${CYPRESS_CONFIG}"
 
   superset-node:
-    image: node:16
+    image: node:14
     container_name: superset_node
     command: ["/app/docker/docker-frontend.sh"]
     env_file: docker/.env
@@ -118,7 +118,7 @@ services:
     depends_on: *superset-depends-on
     user: *superset-user
     volumes: *superset-volumes
-    # Bump memory limit if processing selenium / thumbnails on superset-worker
+    # Bump memory limit if processing selenium / thumbails on superset-worker
     # mem_limit: 2038m
     # mem_reservation: 128M
 

@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-/app/docker/docker-init.sh
+/srv/apps/aquagis_superset/docker/docker-init.sh
 
 # TODO: copy config overrides from ENV vars
 

@@ -17,10 +17,10 @@
 #
 set -e
 
-cd /app/superset-frontend
-npm install -g npm@7
-npm install -f --no-optional --global webpack webpack-cli
-npm install -f --no-optional
+cd /srv/apps/aquagis_superset/superset-frontend
+sudo npm install -g npm@7
+sudo npm install -f --no-optional --global webpack webpack-cli
+sudo npm install -f --no-optional
 
 echo "Running frontend"
-npm run dev
+suod npm run dev

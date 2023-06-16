@@ -20,7 +20,7 @@ set -e
 #
 # Always install local overrides first
 #
-/srv/apps/aquagis_superset/docker/docker-bootstrap.sh
+/app/docker/docker-bootstrap.sh
 
 STEP_CNT=4
 
@@ -37,13 +37,14 @@ Init Step ${1}/${STEP_CNT} [${2}] -- ${3}
 
 EOF
 }
-ADMIN_PASSWORD="admin"
+ADMIN_PASSWORD="1q2w3e"
 # If Cypress run – overwrite the password for admin and export env variables
 if [ "$CYPRESS_CONFIG" == "true" ]; then
     ADMIN_PASSWORD="general"
-    export SUPERSET_CONFIG=tests.integration_tests.superset_test_config
+    export SUPERSET_CONFIG=tests.superset_test_config
     export SUPERSET_TESTENV=true
-    export SUPERSET__SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://gis:gis@192.168.99.141:5432/aquagis_superset
+    export ENABLE_REACT_CRUD_VIEWS=true
+    export SUPERSET__SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://superset:superset@db:5432/superset
 fi
 # Initialize the database
 echo_step "1" "Starting" "Applying DB migrations"

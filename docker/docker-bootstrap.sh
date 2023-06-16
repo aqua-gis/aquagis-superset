@@ -23,7 +23,7 @@ REQUIREMENTS_LOCAL="/app/docker/requirements-local.txt"
 if [ "$CYPRESS_CONFIG" == "true" ]; then
     export SUPERSET_CONFIG=tests.integration_tests.superset_test_config
     export SUPERSET_TESTENV=true
-    export SUPERSET__SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://superset:superset@db:5432/superset
+    export SUPERSET__SQLALCHEMY_DATABASE_URI=postgresql+psycopg2://gis:gis@192.168.99.141:5432/aquagis_superset
 fi
 #
 # Make sure we have dev requirements installed
@@ -31,6 +31,9 @@ fi
 if [ -f "${REQUIREMENTS_LOCAL}" ]; then
   echo "Installing local overrides at ${REQUIREMENTS_LOCAL}"
   pip install -r "${REQUIREMENTS_LOCAL}"
+  pip install flask-oidc==1.3.0
+  pip install itsdangerous==2.0.1
+  pip install flask_openid
 else
   echo "Skipping local overrides"
 fi
@@ -43,7 +46,7 @@ elif [[ "${1}" == "beat" ]]; then
   celery --app=superset.tasks.celery_app:app beat --pidfile /tmp/celerybeat.pid -l INFO -s "${SUPERSET_HOME}"/celerybeat-schedule
 elif [[ "${1}" == "app" ]]; then
   echo "Starting web app..."
-  flask run -p 8088 --with-threads --reload --debugger --host=0.0.0.0
+  flask run -p 1564 --with-threads --reload --debugger --host=0.0.0.0
 elif [[ "${1}" == "app-gunicorn" ]]; then
   echo "Starting web app..."
   /usr/bin/run-server.sh
