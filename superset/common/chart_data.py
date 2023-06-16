@@ -22,6 +22,7 @@ class ChartDataResultFormat(str, Enum):
     Chart data response format
     """
 
+    XLS = "xls"
     CSV = "csv"
     JSON = "json"
 

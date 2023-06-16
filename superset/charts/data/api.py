@@ -18,6 +18,7 @@ from __future__ import annotations
 
 import json
 import logging
+import pandas
 from typing import Any, Dict, Optional, TYPE_CHECKING
 
 import simplejson
@@ -354,6 +355,47 @@ class ChartDataRestApi(ChartRestApi):
                 # return single query results csv format
                 data = result["queries"][0]["data"]
                 return CsvResponse(data, headers=generate_download_headers("csv"))
+
+            # return multi-query csv results bundled as a zip file
+            encoding = current_app.config["CSV_EXPORT"].get("encoding", "utf-8")
+            files = {
+                f"query_{idx + 1}.csv": result["data"].encode(encoding)
+                for idx, result in enumerate(result["queries"])
+            }
+            return Response(
+                create_zip(files),
+                headers=generate_download_headers("zip"),
+                mimetype="application/zip",
+            )
+            
+        if result_format == ChartDataResultFormat.XLS:
+            # Verify user has permission to export CSV file
+            # if not security_manager.can_access("can_csv", "Superset"):
+            #     return self.response_403()
+
+            if not result["queries"]:
+                return self.response_400(_("Empty query result"))
+
+            if len(result["queries"]) == 1:
+                # return single query results XLS format
+                data = result["queries"][0]["data"]
+                df = pandas.DataFrame(data)
+                output_file = 'output.xlsx'
+                df.to_excel(output_file, index=False)
+
+                def generate():
+                    with open(output_file, 'rb') as file:
+                        while True:
+                            chunk = file.read(1024)
+                            if not chunk:
+                                break
+                            yield chunk
+                
+                return Response(
+                    generate(),
+                    headers=generate_download_headers("xlsx"),
+                    mimetype="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                )
 
             # return multi-query csv results bundled as a zip file
             encoding = current_app.config["CSV_EXPORT"].get("encoding", "utf-8")

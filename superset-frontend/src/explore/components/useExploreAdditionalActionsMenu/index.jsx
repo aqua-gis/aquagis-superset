@@ -35,6 +35,7 @@ import EmbedCodeContent from '../EmbedCodeContent';
 const MENU_KEYS = {
   EDIT_PROPERTIES: 'edit_properties',
   DOWNLOAD_SUBMENU: 'download_submenu',
+  EXPORT_TO_XLS: 'export_to_xls',
   EXPORT_TO_CSV: 'export_to_csv',
   EXPORT_TO_CSV_PIVOTED: 'export_to_csv_pivoted',
   EXPORT_TO_JSON: 'export_to_json',
@@ -128,6 +129,19 @@ export const useExploreAdditionalActionsMenu = (
     }
   }, [addDangerToast, latestQueryFormData]);
 
+
+  const exportXLS = useCallback(
+    () =>
+      canDownloadCSV
+        ? exportChart({
+            formData: latestQueryFormData,
+            ownState,
+            resultType: 'full',
+            resultFormat: 'xls',
+          })
+        : null,
+    [canDownloadCSV, latestQueryFormData],
+  );
   const exportCSV = useCallback(
     () =>
       canDownloadCSV
@@ -181,6 +195,11 @@ export const useExploreAdditionalActionsMenu = (
         case MENU_KEYS.EDIT_PROPERTIES:
           onOpenPropertiesModal();
           setIsDropdownVisible(false);
+          break;
+        case MENU_KEYS.EXPORT_TO_XLS:
+          exportXLS();
+          setIsDropdownVisible(false);
+          setOpenSubmenus([]);
           break;
         case MENU_KEYS.EXPORT_TO_CSV:
           exportCSV();
@@ -289,6 +308,13 @@ export const useExploreAdditionalActionsMenu = (
               {t('Export to .CSV')}
             </Menu.Item>
           )}
+          <Menu.Item
+              key={MENU_KEYS.EXPORT_TO_XLS}
+              icon={<FileOutlined />}
+              disabled={!canDownloadCSV}
+            >
+              {t('Export to .XLS')}
+            </Menu.Item>
           <Menu.Item key={MENU_KEYS.EXPORT_TO_JSON} icon={<FileOutlined />}>
             {t('Export to .JSON')}
           </Menu.Item>
