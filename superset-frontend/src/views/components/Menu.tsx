@@ -104,7 +104,7 @@ const StyledHeader = styled.header`
   }px ${theme.gridUnit * 4}px;
         max-width: ${theme.gridUnit * 37}px;
         img {
-          height: 100%;
+          // height: 100%;
           object-fit: contain;
         }
       }
