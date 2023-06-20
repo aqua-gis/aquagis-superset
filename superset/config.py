@@ -178,12 +178,12 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 # Your App secret key. Make sure you override it on superset_config.py.
 # Use a strong complex alphanumeric string and use a tool to help you generate
 # a sufficiently random sequence, ex: openssl rand -base64 42"
-SECRET_KEY = CHANGE_ME_SECRET_KEY
+SECRET_KEY = "\2\1thisismyscretkey\1\2\\e\\y\\y\\h"
 
 # The SQLAlchemy connection string.
-SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(DATA_DIR, "superset.db")
+# SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(DATA_DIR, "superset.db")
 # SQLALCHEMY_DATABASE_URI = 'mysql://myapp@localhost/myapp'
-# SQLALCHEMY_DATABASE_URI = 'postgresql://root:password@localhost/myapp'
+SQLALCHEMY_DATABASE_URI = 'postgresql://aquagis:xas98Y2bbpXdZ7R@192.168.13.10/superset_2'
 
 # In order to hook up a custom password store for all SQLACHEMY connections
 # implement a function that takes a single argument of type 'sqla.engine.url',
@@ -244,7 +244,9 @@ PROXY_FIX_CONFIG = {"x_for": 1, "x_proto": 1, "x_host": 1, "x_port": 1, "x_prefi
 APP_NAME = "Superset"
 
 # Specify the App icon
-APP_ICON = "/static/assets/images/superset-logo-horiz.png"
+#APP_ICON = "/static/assets/images/superset-logo-horiz.png"
+APP_ICON = "/static/assets/images/unisoft-logo.png"
+APP_ICON_WIDTH = 200
 
 # Specify where clicking the logo would take the user
 # e.g. setting it to '/' would take the user to '/superset/welcome/'
