@@ -110,8 +110,7 @@ export function CustomFrame(props: FrameComponentProps) {
     }
   }
 
-  const localFromFlaskBabel =
-    useSelector((state: ExplorePageState) => state.common.locale) || 'en';
+  const localFromFlaskBabel = 'en';
   const currentLocale = locales[LOCALE_MAPPING[localFromFlaskBabel]].DatePicker;
 
   return (
