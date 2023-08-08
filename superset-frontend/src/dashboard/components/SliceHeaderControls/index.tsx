@@ -42,6 +42,7 @@ const MENU_KEYS = {
   CROSS_FILTER_SCOPING: 'cross_filter_scoping',
   DOWNLOAD_AS_IMAGE: 'download_as_image',
   EXPLORE_CHART: 'explore_chart',
+  EXPORT_XLS: 'export_xls',
   EXPORT_CSV: 'export_csv',
   EXPORT_FULL_CSV: 'export_full_csv',
   FORCE_REFRESH: 'force_refresh',
@@ -111,6 +112,7 @@ export interface SliceHeaderControlsProps {
   forceRefresh: (sliceId: number, dashboardId: number) => void;
   logExploreChart?: (sliceId: number) => void;
   toggleExpandSlice?: (sliceId: number) => void;
+  exportXLS?: (sliceId: number) => void;
   exportCSV?: (sliceId: number) => void;
   exportFullCSV?: (sliceId: number) => void;
   handleToggleFullSize: () => void;
@@ -190,6 +192,10 @@ class SliceHeaderControls extends React.PureComponent<
         // eslint-disable-next-line no-unused-expressions
         this.props.logExploreChart &&
           this.props.logExploreChart(this.props.slice.slice_id);
+        break;
+      case MENU_KEYS.EXPORT_XLS:
+        // eslint-disable-next-line no-unused-expressions
+        this.props.exportXLS && this.props.exportXLS(this.props.slice.slice_id);
         break;
       case MENU_KEYS.EXPORT_CSV:
         // eslint-disable-next-line no-unused-expressions
@@ -401,6 +407,13 @@ class SliceHeaderControls extends React.PureComponent<
                 icon={<Icons.FileOutlined css={dropdownIconsStyles} />}
               >
                 {t('Export to .CSV')}
+              </Menu.Item>
+
+              <Menu.Item
+                key={MENU_KEYS.EXPORT_XLS}
+                icon={<Icons.FileOutlined css={dropdownIconsStyles} />}
+              >
+                {t('Export to .XLS')}
               </Menu.Item>
 
               {this.props.slice.viz_type !== 'filter_box' &&

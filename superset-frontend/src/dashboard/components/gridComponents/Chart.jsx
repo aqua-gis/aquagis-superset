@@ -132,6 +132,7 @@ export default class Chart extends React.Component {
     this.changeFilter = this.changeFilter.bind(this);
     this.handleFilterMenuOpen = this.handleFilterMenuOpen.bind(this);
     this.handleFilterMenuClose = this.handleFilterMenuClose.bind(this);
+    this.exportXLS = this.exportXLS.bind(this);
     this.exportCSV = this.exportCSV.bind(this);
     this.exportFullCSV = this.exportFullCSV.bind(this);
     this.forceRefresh = this.forceRefresh.bind(this);
@@ -294,6 +295,23 @@ export default class Chart extends React.Component {
     }
   };
 
+
+  exportXLS(isFullCSV = false) {
+    this.props.logEvent(LOG_ACTIONS_EXPORT_CSV_DASHBOARD_CHART, {
+      slice_id: this.props.slice.slice_id,
+      is_cached: this.props.isCached,
+    });
+    exportChart({
+      formData: isFullCSV
+        ? { ...this.props.formData, row_limit: this.props.maxRows }
+        : this.props.formData,
+      resultType: 'full',
+      resultFormat: 'xls',
+      force: true,
+      ownState: this.props.ownState,
+    });
+  }
+
   exportCSV(isFullCSV = false) {
     this.props.logEvent(LOG_ACTIONS_EXPORT_CSV_DASHBOARD_CHART, {
       slice_id: this.props.slice.slice_id,
@@ -408,6 +426,7 @@ export default class Chart extends React.Component {
           annotationQuery={chart.annotationQuery}
           logExploreChart={this.logExploreChart}
           onExploreChart={this.onExploreChart}
+          exportXLS={this.exportXLS}
           exportCSV={this.exportCSV}
           exportFullCSV={this.exportFullCSV}
           updateSliceName={updateSliceName}
