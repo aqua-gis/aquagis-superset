@@ -1,6 +1,6 @@
 from flask_appbuilder.security.manager import AUTH_OID
 from superset.security import SupersetSecurityManager
-from flask_oidc import OpenIDConnect
+#from flask_oidc import OpenIDConnect
 from flask import Flask,request, redirect
 from flask_appbuilder.security.views import AuthOIDView
 from flask_login import login_user
@@ -12,8 +12,8 @@ class OIDCSecurityManager(SupersetSecurityManager):
 
     def __init__(self, appbuilder):
         super(OIDCSecurityManager, self).__init__(appbuilder)
-        if self.auth_type == AUTH_OID:
-            self.oid = OpenIDConnect(self.appbuilder.get_app)
+        #if self.auth_type == AUTH_OID:
+            #self.oid = OpenIDConnect(self.appbuilder.get_app)
         self.authoidview = AuthOIDCView
 
 class AuthOIDCView(AuthOIDView):
