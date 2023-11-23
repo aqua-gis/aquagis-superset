@@ -14,11 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# x-superset-image: &superset-image apache/superset:${TAG:-latest-dev}
-x-superset-image: &superset-image lkatsarov/aquagis-superset2.0:v2_superset2.0.1
-#x-superset-image: &superset-image  superset-latest-2023:latest
+x-superset-image: &superset-image superset:latest
 x-superset-depends-on: &superset-depends-on
-  # - db
+#  - db
   - redis
 x-superset-volumes: &superset-volumes
   # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
@@ -34,13 +32,13 @@ services:
     volumes:
       - redis:/data
 
-  # db:
-    # env_file: docker/.env-non-dev
-    # image: postgres:10
-    # container_name: superset_db
-    # restart: unless-stopped
-    # volumes:
-      # - db_home:/var/lib/postgresql/data
+#  db:
+#    env_file: docker/.env-non-dev
+#    image: postgres:10
+#    container_name: superset_db
+#    restart: unless-stopped
+#    volumes:
+#      - db_home:/var/lib/postgresql/data
 
   superset:
     env_file: docker/.env-non-dev
@@ -50,7 +48,7 @@ services:
     user: "root"
     restart: unless-stopped
     ports:
-      - 1564:1564
+      - 8088:8088
     depends_on: *superset-depends-on
     volumes: *superset-volumes
 

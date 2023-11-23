@@ -27,29 +27,6 @@ from typing import Optional
 
 from cachelib.file import FileSystemCache
 from celery.schedules import crontab
-from keycloack_securtiy_manager  import  OIDCSecurityManager
-from flask_appbuilder.security.manager import AUTH_OID, AUTH_REMOTE_USER, AUTH_DB, AUTH_LDAP, AUTH_OAUTH
-import os
-'''
----------------------------KEYCLOACK ----------------------------
-'''
-curr  =  os.path.abspath(os.getcwd())
-AUTH_TYPE = AUTH_OID
-#SECRET_KEY: 'SomethingNotEntirelySecret'
-SECRET_KEY = "\2\1thisismyscretkey\1\2\\e\\y\\y\\h"
-OIDC_CLIENT_SECRETS =  curr + '/docker/pythonpath_dev/client_secret.json'
-OIDC_ID_TOKEN_COOKIE_SECURE = False
-OIDC_REQUIRE_VERIFIED_EMAIL = False
-OIDC_OPENID_REALM: 'realm1'
-OIDC_INTROSPECTION_AUTH_METHOD: 'client_secret_post'
-CUSTOM_SECURITY_MANAGER = OIDCSecurityManager
-AUTH_USER_REGISTRATION = True
-AUTH_USER_REGISTRATION_ROLE = 'Gamma'
-OIDC_USER_INFO_ENABLED: True
-PUBLIC_ROLE_LIKE = 'Public'
-'''
---------------------------------------------------------------
-'''
 
 logger = logging.getLogger()
 
@@ -75,7 +52,6 @@ DATABASE_HOST = get_env_variable("DATABASE_HOST")
 DATABASE_PORT = get_env_variable("DATABASE_PORT")
 DATABASE_DB = get_env_variable("DATABASE_DB")
 
-MAPBOX_API_KEY = "pk.eyJ1Ijoidm1hcmlub3YiLCJhIjoiY2w4MXZhYWcyMGp2cDNubWsxZHoxbGNzbSJ9.pMI_OBLHtQ-h5Mr-Tjxy3w"
 
 # The SQLAlchemy connection string.
 SQLALCHEMY_DATABASE_URI = "%s://%s:%s@%s:%s/%s" % (
@@ -135,7 +111,7 @@ WEBDRIVER_BASEURL_USER_FRIENDLY = WEBDRIVER_BASEURL
 SQLLAB_CTAS_NO_LIMIT = True
 
 # Visual Customizations
-APP_NAME = "Справки Aquagis"
+APP_NAME = "Справки Unisoft"
 APP_ICON = "/static/assets/images/superset-logo-horiz.png"
 APP_ICON_WIDTH = 200
 # Path for routing when APP_ICON image is clicked

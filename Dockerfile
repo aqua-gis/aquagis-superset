@@ -102,10 +102,18 @@ COPY --from=superset-node /app/superset-frontend /app/superset-frontend
 ## Lastly, let's install superset itself
 COPY superset /app/superset
 COPY setup.py MANIFEST.in README.md /app/
+RUN apt-get update
+RUN apt-get -y install gettext
 RUN cd /app \
         && chown -R superset:superset * \
         && pip install -e . \
         && flask fab babel-compile --target superset/translations
+
+#GENERATE TRANSLATION MO FILE - added by Ivaylo Nikolov
+RUN msgfmt -o /app/superset/translations/en/LC_MESSAGES/messages.mo /app/superset/translations/en/LC_MESSAGES/messages.po
+
+#COPY THE LOGO OF UniSoft - - added by Ivaylo Nikolov
+RUN cp /app/superset/static/assets/images/unisoft-logo.png /app/superset/static/assets/images/superset-logo-horiz.png
 
 COPY ./docker/run-server.sh /usr/bin/
 
